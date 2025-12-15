@@ -74,30 +74,30 @@ function init() {
 
   changeCursor();
   Pins.init();
-  FME.init();
+  // FME.init();
 
   // Prevent blocks by external services. Sometimes these requests took >6 seconds.
   // Bonus: If either of these fail to load, it doesn't block the map from working properly.
-  Dailies.init();
-  MadamNazar.init();
+  // Dailies.init();
+  // MadamNazar.init();
 
-  const animals = AnimalCollection.init();
-  const locations = Location.init();
-  const encounters = Encounter.init();
-  const treasures = Treasure.init();
-  const bounties = BountyCollection.init();
-  const fmeCondorEgg = CondorEgg.init();
-  const fmeSalvage = Salvage.init();
-  const plants = PlantsCollection.init();
-  const camps = Camp.init();
-  const shops = Shop.init();
-  const singleplayer = Singleplayer.init();
-  const gfh = GunForHire.init();
-  const legendary = Legendary.init();
-  const discoverables = Discoverable.init();
+  // const animals = AnimalCollection.init();
+  // const locations = Location.init();
+  // const encounters = Encounter.init();
+  // const treasures = Treasure.init();
+  // const bounties = BountyCollection.init();
+  // const fmeCondorEgg = CondorEgg.init();
+  // const fmeSalvage = Salvage.init();
+  // const plants = PlantsCollection.init();
+  // const camps = Camp.init();
+  // const shops = Shop.init();
+  // const singleplayer = Singleplayer.init();
+  // const gfh = GunForHire.init();
+  // const legendary = Legendary.init();
+  // const discoverables = Discoverable.init();
   const overlays = Overlay.init();
 
-  Promise.all([animals, locations, encounters, treasures, bounties, fmeCondorEgg, fmeSalvage, plants, camps, shops, gfh, legendary, discoverables, overlays, singleplayer])
+  Promise.all([overlays])
     .then(() => {
       Loader.resolveMapModelLoaded();
       MapBase.afterLoad();
@@ -124,17 +124,17 @@ function init() {
 
   $('#help-container').toggle(Settings.showHelp);
 
-  $('#show-dailies').prop('checked', Settings.showDailies);
+  // $('#show-dailies').prop('checked', Settings.showDailies);
   $('#show-utilities').prop('checked', Settings.showUtilitiesSettings);
   $('#show-customization').prop('checked', Settings.showCustomizationSettings);
   $('#show-import-export').prop('checked', Settings.showImportExportSettings);
-  $('#show-debug').prop('checked', Settings.showDebugSettings);
+  // $('#show-debug').prop('checked', Settings.showDebugSettings);
 
-  $('#dailies-container').toggleClass('opened', Settings.showDailies);
+  // $('#dailies-container').toggleClass('opened', Settings.showDailies);
   $('#utilities-container').toggleClass('opened', Settings.showUtilitiesSettings);
   $('#customization-container').toggleClass('opened', Settings.showCustomizationSettings);
   $('#import-export-container').toggleClass('opened', Settings.showImportExportSettings);
-  $('#debug-container').toggleClass('opened', Settings.showDebugSettings);
+  // $('#debug-container').toggleClass('opened', Settings.showDebugSettings);
 
   setInterval(clockTick, 1000);
 }
@@ -223,10 +223,10 @@ $('#enable-right-click').on('change', function () {
   Settings.isRightClickEnabled = $('#enable-right-click').prop('checked');
 });
 
-$('#show-dailies').on('change', function () {
-  Settings.showDailies = $('#show-dailies').prop('checked');
-  $('#dailies-container').toggleClass('opened', Settings.showDailies);
-});
+// $('#show-dailies').on('change', function () {
+//   Settings.showDailies = $('#show-dailies').prop('checked');
+//   $('#dailies-container').toggleClass('opened', Settings.showDailies);
+// });
 
 $('#show-utilities').on('change', function () {
   Settings.showUtilitiesSettings = $('#show-utilities').prop('checked');
@@ -243,72 +243,72 @@ $('#show-import-export').on('change', function () {
   $('#import-export-container').toggleClass('opened', Settings.showImportExportSettings);
 });
 
-$('#show-debug').on('change', function () {
-  Settings.showDebugSettings = $('#show-debug').prop('checked');
-  $('#debug-container').toggleClass('opened', Settings.showDebugSettings);
-});
+// $('#show-debug').on('change', function () {
+//   Settings.showDebugSettings = $('#show-debug').prop('checked');
+//   $('#debug-container').toggleClass('opened', Settings.showDebugSettings);
+// });
 
 $('#language').on('change', function () {
   Settings.language = $('#language').val();
   Language.setMenuLanguage();
 
-  AnimalCollection.onLanguageChanged();
-  Bounty.onLanguageChanged();
-  Camp.onLanguageChanged();
-  Encounter.onLanguageChanged();
-  GunForHire.onLanguageChanged();
-  Legendary.onLanguageChanged();
-  Location.onLanguageChanged();
-  PlantsCollection.onLanguageChanged();
-  Shop.onLanguageChanged();
-  Treasure.onLanguageChanged();
-  Singleplayer.onLanguageChanged();
+  // AnimalCollection.onLanguageChanged();
+  // Bounty.onLanguageChanged();
+  // Camp.onLanguageChanged();
+  // Encounter.onLanguageChanged();
+  // GunForHire.onLanguageChanged();
+  // Legendary.onLanguageChanged();
+  // Location.onLanguageChanged();
+  // PlantsCollection.onLanguageChanged();
+  // Shop.onLanguageChanged();
+  // Treasure.onLanguageChanged();
+  // Singleplayer.onLanguageChanged();
 
-  Dailies.sortDailies();
-  MadamNazar.addMadamNazar();
+  // Dailies.sortDailies();
+  // MadamNazar.addMadamNazar();
   MapBase.updateTippy('language');
 });
 
 $('#marker-size').on('change', function () {
   Settings.markerSize = Number($('#marker-size').val());
 
-  Camp.onSettingsChanged();
-  CondorEgg.onSettingsChanged();
-  Encounter.onSettingsChanged();
-  GunForHire.onSettingsChanged();
-  Location.onSettingsChanged();
-  Salvage.onSettingsChanged();
-  Shop.onSettingsChanged();
-  Treasure.onSettingsChanged();
-  Singleplayer.onSettingsChanged();
+  // Camp.onSettingsChanged();
+  // CondorEgg.onSettingsChanged();
+  // Encounter.onSettingsChanged();
+  // GunForHire.onSettingsChanged();
+  // Location.onSettingsChanged();
+  // Salvage.onSettingsChanged();
+  // Shop.onSettingsChanged();
+  // Treasure.onSettingsChanged();
+  // Singleplayer.onSettingsChanged();
 
-  MadamNazar.addMadamNazar();
+  // MadamNazar.addMadamNazar();
   Pins.loadPins();
 });
 
 $('#marker-opacity').on('change', function () {
   Settings.markerOpacity = Number($('#marker-opacity').val());
 
-  Camp.onSettingsChanged();
-  CondorEgg.onSettingsChanged();
-  Encounter.onSettingsChanged();
-  GunForHire.onSettingsChanged();
-  Location.onSettingsChanged();
-  Salvage.onSettingsChanged();
-  Shop.onSettingsChanged();
-  Treasure.onSettingsChanged();
-  Singleplayer.onSettingsChanged();
+  // Camp.onSettingsChanged();
+  // CondorEgg.onSettingsChanged();
+  // Encounter.onSettingsChanged();
+  // GunForHire.onSettingsChanged();
+  // Location.onSettingsChanged();
+  // Salvage.onSettingsChanged();
+  // Shop.onSettingsChanged();
+  // Treasure.onSettingsChanged();
+  // Singleplayer.onSettingsChanged();
 
-  MadamNazar.addMadamNazar();
+  // MadamNazar.addMadamNazar();
   Pins.loadPins();
 });
 
 $('#overlay-opacity').on('change', function () {
   Settings.overlayOpacity = Number($('#overlay-opacity').val());
-  Legendary.onSettingsChanged();
+  // Legendary.onSettingsChanged();
   Overlay.onSettingsChanged();
-  CondorEgg.onSettingsChanged();
-  Salvage.onSettingsChanged();
+  // CondorEgg.onSettingsChanged();
+  // Salvage.onSettingsChanged();
 });
 
 $('#tooltip').on('change', function () {
@@ -326,14 +326,14 @@ $('#marker-cluster').on('change', function () {
 
   Layers.oms.clearMarkers();
 
-  Camp.onSettingsChanged();
-  Encounter.onSettingsChanged();
-  GunForHire.onSettingsChanged();
-  Location.onSettingsChanged();
-  Shop.onSettingsChanged();
-  Singleplayer.onSettingsChanged();
+  // Camp.onSettingsChanged();
+  // Encounter.onSettingsChanged();
+  // GunForHire.onSettingsChanged();
+  // Location.onSettingsChanged();
+  // Shop.onSettingsChanged();
+  // Singleplayer.onSettingsChanged();
 
-  MadamNazar.addMadamNazar();
+  // MadamNazar.addMadamNazar();
   Pins.loadPins();
 });
 
@@ -343,30 +343,30 @@ $('#enable-marker-popups-hover').on('change', function () {
 
 $('#enable-marker-shadows').on('change', function () {
   Settings.isShadowsEnabled = $('#enable-marker-shadows').prop('checked');
-  Camp.onSettingsChanged();
-  Encounter.onSettingsChanged();
-  GunForHire.onSettingsChanged();
-  Location.onSettingsChanged();
-  Shop.onSettingsChanged();
-  Singleplayer.onSettingsChanged();
-  Treasure.onSettingsChanged();
+  // Camp.onSettingsChanged();
+  // Encounter.onSettingsChanged();
+  // GunForHire.onSettingsChanged();
+  // Location.onSettingsChanged();
+  // Shop.onSettingsChanged();
+  // Singleplayer.onSettingsChanged();
+  // Treasure.onSettingsChanged();
   Pins.loadPins();
-  MadamNazar.addMadamNazar();
+  // MadamNazar.addMadamNazar();
 });
 
 $('#enable-legendary-backgrounds').on('change', function () {
   Settings.isLaBgEnabled = $('#enable-legendary-backgrounds').prop('checked');
-  Legendary.onSettingsChanged();
+  // Legendary.onSettingsChanged();
 });
 
 $('#legendary-animal-marker-type').on('change', function () {
   Settings.legendarySpawnIconType = $('#legendary-animal-marker-type').val();
-  Legendary.onSettingsChanged();
+  // Legendary.onSettingsChanged();
 });
 
 $('#legendary-animal-marker-size').on('change', function () {
   Settings.legendarySpawnIconSize = Number($('#legendary-animal-marker-size').val());
-  Legendary.onSettingsChanged();
+  // Legendary.onSettingsChanged();
 });
 
 $('#enable-dclick-zoom').on('change', function () {
